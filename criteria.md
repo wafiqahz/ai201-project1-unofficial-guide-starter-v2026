@@ -36,16 +36,16 @@ The "GROUNDING_INSTRUCTION" in generate.py includes a rule to name the specific 
 
 ---
 
-## 3. The relevance gate stops out-of-corpus questions
+## 3. The relevance gate or the model stops out-of-corpus questions
 
 When I ask a question my documents clearly don't cover, the relevance gate
-stops it and the system returns "I don't have enough information about that" —
+or the model stops it and the system returns "I don't have enough information about that" —
 in at least 4 of 5 tries.
 
 **Why this target:**
 <!-- What did your distances look like when you set the cutoff in Milestone 4?
      Was there a clean gap, or did the two groups overlap? -->
-At Milestone 2: The "gym" out-of-corpus test question may have enough semantic overlap with campus life posts, and lowering the cutoff too much to accomodate for this may cause the model to start refusing to answer questions it has the answer to.
+At Milestone 2: The "gym" out-of-corpus test question may have enough semantic overlap with campus life posts, and lowering the cutoff too much to accomodate for this may cause the model to start refusing to answer questions it has the answer to. Note that if the relevance gate lets an out-of-corpus question through, there is a second layer of protection in the model's prompt instructions that tells it to not answer questions it doesn't have enough information on. There are two layers of protection that can be used to fulfill this criteria.
 
 ---
 

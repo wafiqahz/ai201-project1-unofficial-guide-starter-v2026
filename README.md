@@ -26,7 +26,7 @@
      this repo.
 
      Milestone 5. -->
-     I picked the "campus life" corpus, which includes short posts about student life. The corresponding model can answer questions about administrative tasks, specific classes, and dining and housing information. Note that my model is probably specific to the college campus that the corpus is sourced from, since this sort of information changes from college to college.
+     I picked the "campus life" corpus, which includes short posts about student life. The corresponding model can answer questions about student advice and insights on administrative tasks, specific classes, and dining and housing information. Note that my model is specific to the college campus that the corpus is sourced from, since this sort of information changes from college to college.
 
 ## Chunking Strategy for Campus Life
 
@@ -159,9 +159,9 @@ Sources retrieved: housing_aldridge_hall.txt, housing_calder_annexe.txt, housing
 
      Milestone 5. -->
 
-**1.**
+**1.**When I first ran the app.py commands in the terminal, I got the following message: "Error executing model: Error computing NN outputs." I pasted the error into Claude Code, and it explained that this is a known problem for CoreML running on some macOS versions, and told me to switch to running the model on the CPU. Thus, I made the corresponding change in line 67 of store.py.
 
-**2.**
+**2.**When I ran my out-of-scope question about what time the campus gym opens, the result printed out a best distance of 0.477, which was below the then set cutoff of 0.6, but the model still didn't answer the question. I asked Claude how that was possible, and it explained that althout the cutoff gate let the question through, the model followed the prompt instructions and refused to answer a question it didn't have information on. I used Claude's explanation to modify Criteria 3 so that either the cutoff gate or the model's prompt instruction works so that the system doesn't answer out-of-scope questions.
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
