@@ -26,6 +26,7 @@
      this repo.
 
      Milestone 5. -->
+     I picked the "campus life" corpus, which includes short posts about student life. The corresponding model can answer questions about administrative tasks, specific classes, and dining and housing information. Note that my model is probably specific to the college campus that the corpus is sourced from, since this sort of information changes from college to college.
 
 ## Chunking Strategy
 
