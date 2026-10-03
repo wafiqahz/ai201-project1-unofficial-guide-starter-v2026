@@ -114,13 +114,17 @@ Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building
      visible. Milestone 4. -->
 
 **Question:**
+Which dorms have students NOT shared laundry costs for?
 
 **Answer:**
 
 ```
+Based on the provided documents, Tamsin Court has in-unit washer-dryers, so laundry costs are not charged per wash/dry cycle like the other buildings (housing_tamsin_court.txt).
+
+Sources retrieved: housing_aldridge_hall.txt, housing_calder_annexe.txt, housing_innisfree_hall.txt, housing_old_brewhouse_laundry.txt, housing_tamsin_court.txt
 ```
 
-**My relevance cutoff:**
+**My relevance cutoff:** 0.475, because the largest distance for an in-scope question was 0.470, and the smallest distance for an out-of-scope question was 0.477. Since my question about the gym is probably as close semantically than an out-of-scope question can get, I don't think the best distance for an out-of-scope question can get much lower. Thus, I have set my cutoff to be in the gap, but closer to the out-of-scope upper limit to allow for more leeway for in-scope questions.
 
 <!-- The number you set in config.py, and how you got there.
 
@@ -133,7 +137,16 @@ Laundry costs $1.75 wash, $1.75 dry, app-based. On noise: moderate; the building
 
 | Question | In corpus? | Best distance |
 |---|---|---|
-|  |  |  |
+| What is an advantage to declaring my major early? | Y | 0.225 |
+| What CS courses have students given advice about? | Y | 0.470 |
+| When do students recommend going to Verrill Street Grill? | Y | 0.324 |
+| Which dorms have students NOT shared laundry costs for? | Y | 0.397 |
+| Which study rooms should I book if I want to use the whiteboard? | Y | 0.354 |
+| What is the capital of Mongolia? | N | 0.825 |
+| How do I change the oil in a diesel engine? | N | 0.934|
+| What time does the campus gym open? | N | 0.477 |
+| What is the recommended dosage of ibuprofen for a headache? | N | 0.844 |
+| How do I write a for loop in Rust? | N | 0.896 |
 
 ## How I Used AI
 

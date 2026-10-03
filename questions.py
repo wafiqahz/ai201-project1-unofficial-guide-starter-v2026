@@ -24,7 +24,7 @@ names a target of "4 of 5", and four of three is not a thing.
 QUESTIONS = [
     # {"question": "...", "expects": "..."},
     {"question": "What is an advantage to declaring my major early?", "expects": "departmental adviser"},
-    {"question": "What CS courses have students given advice about?", "expects": "CS 210"},
+    {"question": "What CS courses have students given advice about?", "expects": ["CS 210","CS 340"]},
     {"question": "When do students recommend going to Verrill Street Grill?", "expects": "before 11:45"},
     {"question": "Which dorms have students NOT shared laundry costs for?", "expects": "Tamsin Court"},
     {"question": "Which study rooms should I book if I want to use the whiteboard?", "expects": "rooms 210 and 211"},
@@ -40,7 +40,7 @@ QUESTIONS = [
 OUT_OF_SCOPE = [
     "What is the capital of Mongolia?",
     "How do I change the oil in a diesel engine?",
-    "Who won the 1994 World Cup?",
+    "What time does the campus gym open?",
     "What is the recommended dosage of ibuprofen for a headache?",
     "How do I write a for loop in Rust?",
 ]

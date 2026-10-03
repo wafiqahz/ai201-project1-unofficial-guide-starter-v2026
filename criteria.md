@@ -45,7 +45,7 @@ in at least 4 of 5 tries.
 **Why this target:**
 <!-- What did your distances look like when you set the cutoff in Milestone 4?
      Was there a clean gap, or did the two groups overlap? -->
-At Milestone 2: The "for loop" out-of-corpus test question may have enough overlap with all the chunks about CS courses, and lowering the cutoff too much to accomodate for this may cause the model to start refusing to answer questions it has the answer to.
+At Milestone 2: The "gym" out-of-corpus test question may have enough semantic overlap with campus life posts, and lowering the cutoff too much to accomodate for this may cause the model to start refusing to answer questions it has the answer to.
 
 ---
 
@@ -78,10 +78,10 @@ The campus life corpus holds short student posts. Since this corpus has consiste
      handles badly, about source attribution being correct rather than merely
      present — anything, as long as it names a number or an observable
      outcome. -->
-For 5 of the 5 test questions, every document an answer cites includes information that is actually found in the reply.
+For 5 of the 5 test questions, every document an answer cites contains information that is actually found in that answer.
 
 **Why this target:**
-A RAG model's strength should be using the specific corpus provided, and given the grounding instructions in the system, there should be no tolerance for citing sources that were never used.
+A RAG model's strength should be using the specific corpus provided, and given the grounding instructions in the system, there should be no tolerance for citing sources that were never used. Note that this is different from the sources reetrieved, which will always be a fixed number set by TOP_K.
 
 ---
 
