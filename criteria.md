@@ -23,8 +23,7 @@ For at least 4 of my 5 test questions, the retrieved chunks include one that
 contains the answer.
 
 **Why this target:**
-<!-- e.g. "One of my questions is about a topic only two documents mention, so
-     I expect that one to be hard." -->
+One of my questions asks about which dorm have students NOT shared laundry costs for, and I'm not sure if the current RAG model can process negative questions.
 
 ---
 
@@ -33,8 +32,7 @@ contains the answer.
 Every answer the system produces names at least one source document.
 
 **Why this target:**
-<!-- Why all five and not four? What about your setup makes that achievable —
-     or what would have to go wrong for it not to be? -->
+The "GROUNDING_INSTRUCTION" in generate.py includes a rule to name the specific file that the answer came from. Also, every retrieved chunk is linked to its file during indexing, so the model has the file linked to any chunk it retrieves. This setup makes 5/5 test questions a realistic criteria.
 
 ---
 
@@ -44,19 +42,19 @@ When I ask a question my documents clearly don't cover, the relevance gate
 stops it and the system returns "I don't have enough information about that" —
 in at least 4 of 5 tries.
 
-<!-- The five questions are the ones in `OUT_OF_SCOPE` at the bottom of
-     `questions.py`, and `run_eval.py` puts them through the gate and writes
-     what happened into your run log. Swap them for your own if you'd rather —
-     just keep five of them, or the "4 of 5" above has nothing to be 4 of. -->
-
 **Why this target:**
 <!-- What did your distances look like when you set the cutoff in Milestone 4?
      Was there a clean gap, or did the two groups overlap? -->
+At Milestone 2: The "for loop" out-of-corpus test question may have enough overlap with all the chunks about CS courses, and lowering the cutoff too much to accomodate for this may cause the model to start refusing to answer questions it has the answer to.
 
 ---
 
-## 4. Something about your chunks
+## 4. Efficient chunking
 
+All 5 sample chunks are between 200-425 characters.
+
+**Why this target:**
+The campus life corpus holds short student posts. Since this corpus has consistent pieces of text that hold a complete thought, measuring each chunk's character length is reasonable. The corpora README.md states that there are about 317 characters per document, so a range is created around that mean.
 <!-- YOU WRITE THIS ONE.
 
      How would you know if your chunks were the right size? Name something
@@ -69,15 +67,9 @@ in at least 4 of 5 tries.
        - "No chunk is shorter than 200 characters, since anything below that
           in my corpus turned out to be a heading with no content under it." -->
 
-
-
-**Why this target:**
-
-
-
 ---
 
-## 5. Your choice
+## 5. Evidence-driven accuracy
 
 <!-- YOU WRITE THIS ONE TOO.
 
@@ -86,12 +78,10 @@ in at least 4 of 5 tries.
      handles badly, about source attribution being correct rather than merely
      present — anything, as long as it names a number or an observable
      outcome. -->
-
-
+For 5 of the 5 test questions, every document an answer cites includes information that is actually found in the reply.
 
 **Why this target:**
-
-
+A RAG model's strength should be using the specific corpus provided, and given the grounding instructions in the system, there should be no tolerance for citing sources that were never used.
 
 ---
 
