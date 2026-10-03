@@ -51,10 +51,10 @@ At Milestone 2: The "for loop" out-of-corpus test question may have enough overl
 
 ## 4. Efficient chunking
 
-All 5 sample chunks are between 200-425 characters.
+All 5 sample chunks are between 150-550 characters.
 
 **Why this target:**
-The campus life corpus holds short student posts. Since this corpus has consistent pieces of text that hold a complete thought, measuring each chunk's character length is reasonable. The corpora README.md states that there are about 317 characters per document, so a range is created around that mean.
+The campus life corpus holds short student posts. Since this corpus has consistent pieces of text that hold a complete thought and the title is extremely important to provide context for the rest of the post, each document should be its own chunk. The limits chosen above appropriately include the character lengths for the shortest and longest posts.
 <!-- YOU WRITE THIS ONE.
 
      How would you know if your chunks were the right size? Name something
