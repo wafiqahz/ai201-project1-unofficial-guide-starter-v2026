@@ -190,15 +190,69 @@ Sources retrieved: housing_aldridge_hall.txt, housing_calder_annexe.txt, housing
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 5/5 | 5/5 | 4/5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Chunks are a certain size | 150-550 chars | 5 of 5 | 5/5 | 5/5 | MET |
+| 5. Cited documents contain information found in the answer | 5 of 5 | 5/5 | 5/5 | 4/5 | MISSED |
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
      Name the file and function that produced it. -->
+
+### Sample question: What do students say is an advantage to declaring your major early? — run 1
+
+#### Criterion 1: retrieved chunks contain the answer
+
+Sources retrieved: admin_add_drop_deadline.txt, admin_declaring_a_major.txt, admin_graduation_requirements.txt, admin_housing_lottery.txt, admin_pass_fail_option.txt
+
+'admin_declaring_a_major.txt':
+```
+On the declaring a major
+
+You declare at the end of your second semester, or later if you need to. There's no penalty for declaring late and no advantage to declaring early except that it assigns you a departmental adviser, who is generally more useful than the general one.
+```
+
+Produced by: store.py::search
+
+#### Criterion 2: every answer names a source
+
+Answer: According to `admin_declaring_a_major.txt`, there is no advantage to declaring early except that it assigns you a departmental adviser.
+
+Produced by: generate.py::answer_from_chunks
+
+#### Criterion 3: Gate stops out-of-corpus questions
+| Out-of-scope question | Best distance | Gate |
+|---|---|---|
+| What is the capital of Mongolia? | 0.825 | refused |
+| How do I change the oil in a diesel engine? | 0.934 | refused |
+| What time does the campus gym open? | 0.477 | refused |
+| What is the recommended dosage of ibuprofen for a headache? | 0.844 | refused |
+| How do I write a for loop in Rust? | 0.896 | refused |
+
+Produced by: run_eval.py::check_out_of_scope, using gate.py::check
+
+#### Criterion 4: Chunks are a certain size
+
+88 chunks, 317 characters on average (shortest 178, longest 549)
+
+Produced by: chunker.py::split_documents
+
+#### Criterion 5: cited documents contain information found in the answer
+
+Answer:
+```
+According to `admin_declaring_a_major.txt`, there is no advantage to declaring early except that it assigns you a departmental adviser.
+```
+
+'admin_declaring_a_major.txt':
+```
+On the declaring a major
+
+You declare at the end of your second semester, or later if you need to. There's no penalty for declaring late and no advantage to declaring early except that it assigns you a departmental adviser, who is generally more useful than the general one.
+```
+
+Produced by: generate.py::answer_from_chunks
 
 ## Verdicts
 
