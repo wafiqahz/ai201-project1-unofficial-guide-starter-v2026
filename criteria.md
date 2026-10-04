@@ -83,6 +83,11 @@ For 5 of the 5 test questions, every document an answer cites contains informati
 **Why this target:**
 A RAG model's strength should be using the specific corpus provided, and given the grounding instructions in the system, there should be no tolerance for citing sources that were never used. Note that this is different from the sources reetrieved, which will always be a fixed number set by TOP_K.
 
+CHANGED IN UNIT 2: For 5 of the 5 test questions, ALL parts of the model's answer comes from cited documents.
+
+**Why this target:**
+A RAG model's strength should be using the specific corpus provided, and given the grounding instructions in the system, there should be no tolerance for the model hallucinating parts of the answer or providing parts of the answer from memory rather than the cited sources.
+
 ---
 
 <!-- ─────────────────────────────────────────────────────────────────────────

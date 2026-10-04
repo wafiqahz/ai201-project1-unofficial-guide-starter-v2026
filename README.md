@@ -192,9 +192,16 @@ Sources retrieved: housing_aldridge_hall.txt, housing_calder_annexe.txt, housing
 |---|---|---|---|---|---|
 | 1. Retrieved chunk contains the answer | 4 of 5 | 5/5 | 5/5 | 4/5 | MET |
 | 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
-| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
-| 4. Chunks are a certain size | 150-550 chars | 5 of 5 | 5/5 | 5/5 | MET |
-| 5. Cited documents contain information found in the answer | 5 of 5 | 5/5 | 5/5 | 4/5 | MISSED |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | - | - | MET |
+| 4. Chunks are a certain size | 150-550 chars | 5/5 | 5/5 | 5/5 | MET |
+| 5. All parts of the model's answer comes from cited documents | 5 of 5 | 5/5 | 5/5 | 4/5 | MISSED |
+
+### Criterion Met/Missed Decision
+1. Retrieved chunk contains the answer: MET. One of the answers in run 3 didn't include the expected answer phrase, but since the criteria only asks for 4/5 passes, it is still met.
+2. Every answer names a source: MET. All questions in all runs cite at least 1 source.
+3. Gate stops out-of-corpus questions: MET. This is a deterministic check, so only one run is needed. The single run resulted in the model refusing to answer all out-of-scope questions.
+4. Chunks are a certain size: MET. This isn't dependent on runs, but the indexing. As discussed in UNIT 1, this chunking criteria is appropriate for the campus life corpus.
+5. All parts of the model's answer comes from cited documents: MISSED. Run 3 of question 1 resulted in the model providing an incorrect answer, and this answer does not match what is said in the document the answer cites.
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
@@ -217,7 +224,7 @@ Produced by: store.py::search
 
 #### Criterion 2: every answer names a source
 
-Answer: According to `admin_declaring_a_major.txt`, there is no advantage to declaring early except that it assigns you a departmental adviser.
+Answer:According to `admin_declaring_a_major.txt`, there is no advantage to declaring early except that it assigns you a departmental adviser.
 
 Produced by: generate.py::answer_from_chunks
 
@@ -238,7 +245,7 @@ Produced by: run_eval.py::check_out_of_scope, using gate.py::check
 
 Produced by: chunker.py::split_documents
 
-#### Criterion 5: cited documents contain information found in the answer
+#### Criterion 5: all parts of the model's answer comes from cited documents
 
 Answer:
 ```
@@ -251,6 +258,8 @@ On the declaring a major
 
 You declare at the end of your second semester, or later if you need to. There's no penalty for declaring late and no advantage to declaring early except that it assigns you a departmental adviser, who is generally more useful than the general one.
 ```
+
+All parts of the model's answer did come from the cited document.
 
 Produced by: generate.py::answer_from_chunks
 
