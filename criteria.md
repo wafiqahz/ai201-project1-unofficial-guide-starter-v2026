@@ -88,6 +88,8 @@ CHANGED IN UNIT 2: For 5 of the 5 test questions, ALL parts of the model's answe
 **Why this target:**
 A RAG model's strength should be using the specific corpus provided, and given the grounding instructions in the system, there should be no tolerance for the model hallucinating parts of the answer or providing parts of the answer from memory rather than the cited sources.
 
+**Why the revision:** This is more unique of a criteria from criteria 1 than my previous criteria, so the evaluation is more holistic.
+
 ---
 
 <!-- ─────────────────────────────────────────────────────────────────────────

@@ -196,13 +196,6 @@ Sources retrieved: housing_aldridge_hall.txt, housing_calder_annexe.txt, housing
 | 4. Chunks are a certain size | 150-550 chars | 5/5 | 5/5 | 5/5 | MET |
 | 5. All parts of the model's answer comes from cited documents | 5 of 5 | 5/5 | 5/5 | 4/5 | MISSED |
 
-### Criterion Met/Missed Decision
-1. Retrieved chunk contains the answer: MET. One of the answers in run 3 didn't include the expected answer phrase, but since the criteria only asks for 4/5 passes, it is still met.
-2. Every answer names a source: MET. All questions in all runs cite at least 1 source.
-3. Gate stops out-of-corpus questions: MET. This is a deterministic check, so only one run is needed. The single run resulted in the model refusing to answer all out-of-scope questions.
-4. Chunks are a certain size: MET. This isn't dependent on runs, but the indexing. As discussed in UNIT 1, this chunking criteria is appropriate for the campus life corpus.
-5. All parts of the model's answer comes from cited documents: MISSED. Run 3 of question 1 resulted in the model providing an incorrect answer, and this answer does not match what is said in the document the answer cites.
-
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
      Name the file and function that produced it. -->
@@ -276,11 +269,11 @@ Produced by: generate.py::answer_from_chunks
 
 | # | Criterion | Verdict | How I decided |
 |---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
+| 1 | Retrieved chunk contains the answer | MET | One of the answers in run 3 didn't include the expected answer phrase, but since the criteria only asks for 4/5 passes, it is still met. |
+| 2 | Every answer names a source | MET | All questions in all runs cite at least 1 source. |
+| 3 | Gate stops out-of-corpus questions | MET | This is a deterministic check, so only one run is needed. The single run resulted in the model refusing to answer all out-of-scope questions. |
+| 4 | Chunks are a certain size | MET | This isn't dependent on runs, but the indexing. As discussed in UNIT 1, this chunking criteria is appropriate for the campus life corpus. |
+| 5 | All parts of the model's answer comes from cited documents | MISSED | Run 3 of question 1 resulted in the model providing an incorrect answer, and this answer does not match what is said in the document the answer cites. |
 
 ## Diagnoses
 
@@ -301,6 +294,11 @@ Produced by: generate.py::answer_from_chunks
      low, and which one you'd tighten and to what.
 
      Milestone 3. -->
+
+     Criterion 5 was missed, due to a run of question one ("What do students say is an advantage to declaring your major early?").
+     
+     Stage: Generation
+     In the correct document in the corpus, the answer is there is "no advantage to declaring early except that it assigns you a departmental adviser", and during the generation stage, the model missed the except clause during a run that it caught in the other two runs. Thus, the answer contradicts the document it cited, resulting in missing criteria 5. (Retrieval returned the correct document inn all 3 runs, at the same distance 0.264.) 
 
 ## The Improvement
 
