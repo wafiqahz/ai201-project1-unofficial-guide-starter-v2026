@@ -163,6 +163,9 @@ Sources retrieved: housing_aldridge_hall.txt, housing_calder_annexe.txt, housing
 
 **2.**When I ran my out-of-scope question about what time the campus gym opens, the result printed out a best distance of 0.477, which was below the then set cutoff of 0.6, but the model still didn't answer the question. I asked Claude how that was possible, and it explained that althout the cutoff gate let the question through, the model followed the prompt instructions and refused to answer a question it didn't have information on. I used Claude's explanation to modify Criteria 3 so that either the cutoff gate or the model's prompt instruction works so that the system doesn't answer out-of-scope questions.
 
+UNIT 2
+**1.**Claude Code helped me build hybrid search when I was considering that for my improvement for milestone 4. However, I decided against this improvement, since it didn't fix my missed criteria issue that I diagnosed, and Claude Code helped revert my code back to what it was before hybrid search was added.
+
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
      claims earns nothing.
@@ -342,6 +345,7 @@ Produced by: generate.py::answer_from_chunks
      not.
 
      Milestone 5. -->
+     Currently, all my criteria are met. However, I believe that during my testing, some of my variables like top_k and threshold were not completely fine-tuned. For example, my threshold=0.475, which is oddly specific and is based on my test of only 10 questions. These variables may not be viable for a largest set of questions, so I would write many more test questions to further understand the gap between in-scope and out-of-scope questions. This would allow me to further finetune the threshold value.
 
 ## What I'd Do Differently
 
@@ -349,3 +353,4 @@ Produced by: generate.py::answer_from_chunks
      differently, and why?
 
      Milestone 5. -->
+The chunking criteria did not feel useful, since my chunker keeps each campus life post whole. I would replace it with a criterion that tests whether keeping posts whole actually helps retrrieval. For example, "For 3 of 5 test questions, the complete answer sits in a single chunk that ranks in the top 2." I set the criteria to only 3 of 5, since the scope of some questions may be larger than a single post. However, most questions aimed at the model should be able to be answered with one post for efficiency and less inaccuracy when combining/comparing chunks.
