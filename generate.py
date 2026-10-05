@@ -279,6 +279,7 @@ Rules:
 - Use only the information in the documents below. Do not use anything you know from elsewhere.
 - If the documents don't cover the question, say you don't have enough information. Do not guess.
 - Name the document your answer came from, using the filename given in each excerpt.
+- Keep any conditions or exceptions the document states ("except", "unless", "only if"). Never turn a qualified statement into an absolute one.
 - Be brief. Two or three sentences is usually enough."""
 
 

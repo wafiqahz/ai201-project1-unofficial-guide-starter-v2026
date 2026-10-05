@@ -302,9 +302,10 @@ Produced by: generate.py::answer_from_chunks
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** I will add the following to the prompt: "Keep any conditions or exceptions the document states ("except", "unless", "only if")."
 
-**Why I picked it:**
+
+**Why I picked it:**Since my diagnosis was a generation-stage issue, I need to fix the prompt. The new line added to the prompt directly tries to improve the issue that caused criteria 5 to be missed earlier, when the model ignored an except clause.
 
 <!-- Connect it to a specific diagnosis above in one sentence. If you can't,
      you picked a fix because it sounded impressive. -->
@@ -316,11 +317,11 @@ Produced by: generate.py::answer_from_chunks
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunk contains the answer | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | - | - | MET |
+| 4. Chunks are a certain size | 150-550 chars | 5/5 | 5/5 | 5/5 | MET |
+| 5. All parts of the model's answer comes from cited documents | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
 
 **Did it help?**
 
@@ -330,6 +331,7 @@ Produced by: generate.py::answer_from_chunks
      tell.
 
      Milestone 4. -->
+     According to the test, the change to the prompt did help. During all runs, the model's answers to the "declaring an early major advantage" question does not miss the "except" clause. However, since it was only a 1-run miss during the first test, more runs should be run to ensure this issue was actually solved.
 
 ## What's Still Broken
 
